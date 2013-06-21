@@ -1,0 +1,54 @@
+<html>
+<body>
+[% INCLUDE 'header.tt' %]
+<a href="http://www.hatena.ne.jp/logout" target="blank">Hatena Logout</a><br>
+
+<br><br>
+
+<style type="text/css">
+.fixed{
+position:fixed;
+top:20px;/*固定させたい位置*/
+width:27%;
+}
+#band{
+height:5px;
+}
+</style>
+<!--Layout2-->
+          
+          <div class="span9">
+            <div class="well">
+              [% IF allnum != 0 %]
+              	Bookmarkの横の数字は，メールが送信された数です．
+            	 <!--
+                     <script>
+                       var i = 0;
+                       for(i=0; i<window.document.links.length; i++){
+                                                                var len=document.links[i];
+                                                                alert(len);
+                                                                }
+                                                                
+                                                                </script>
+                     -->
+                 [%- FOREACH item = history -%]
+            	 <div class="well-fff8dc">
+            	   <!--<p align="right">
+              	       &nbsp;<button class="close">&times;</button>
+            	       </p>
+              	   <a href="[%- item.url | html -%]" target="blank">[%- item.title | html -%]</a><br>-->
+                   ([%- item.bookmark.reminded_num | html -%]) 
+                   <a href="[%- item.bookmark.originalurl | html -%]" title="[%- item.bookmark.title | html -%]" target="blank">[%- item.bookmark.title | html -%]</a><br>
+                   [%- item.sendtime | html -%]
+                 
+            	 </div>
+                 [% END %]
+                 <br>
+                 [% ELSE %]
+                   <h4>ようこそ、<img src="[% c.session.image_url %]" height="32" width="32">[%- c.session.name -%]さん。</h4>
+                   <h5>あなたは、<a href= "/bookmarksetting">リマインドの設定</a>をする必要があります。</h5>
+                 [% END %]
+            </div>
+          </div>
+</body>
+</html>

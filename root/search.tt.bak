@@ -1,0 +1,64 @@
+<html>
+<body>
+[% INCLUDE 'header.tt' %]
+<a href="http://www.hatena.ne.jp/logout" target="blank">Hatena Logout</a><br>
+
+<br><br>
+<div class="span4">
+  <div class="well">
+    <font size="3">タグ</font><br>
+    <div id="tagbox">
+      <font size="4"><a href="/list" class="btn btn-primary">すべて</a></font><br>
+      [% FOREACH user = tags %]
+        [% FOREACH item = user.user_usertag %]
+          [% IF item.tag.tag == '' %]
+          <font size="4"><a href="/list?tag=[% item.tag.tag | html %]" class="btn btn-primary">[タグ無し]</a></font><br />
+          [% ELSE %]
+          <font size="4"><a href="/list?tag=[% item.tag.tag | html %]" class="btn btn-primary">[% item.tag.tag | html %]</a></font><br />
+          [% END %]
+        [% END %]
+      [% END %]
+    </div>
+    <br>
+    <a href="http://b.hatena.ne.jp/entry/http://reminder.asia:4000/" class="hatena-bookmark-button" data-hatena-bookmark-title="Bookmark Reminder" data-hatena-bookmark-layout="standard-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+<div id="band">
+</div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://reminder.asia:4000" data-text="Bookmark Reminder -あなたのブックマークをリマインド-" data-via="Reminderasia" data-lang="ja" data-hashtags="reminder" data-size="large">ツイート</a>
+<div id="band">
+</div>
+<a href="https://twitter.com/Reminderasia" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large">@Reminderasiaさんをフォロー</a>
+</div>
+</div>
+
+<!--Layout2-->
+          
+          <div class="span9">
+            <div class="well">
+            	<h5>タグ：[% remind_tag | html %]</h5>
+            	<div align="right">
+              	<!-- 検索 -->
+              	<form class="form-search" method="POST" action="/search">
+                	<input type="text" name="search_word" value="[% search_about %]"class="input-medium search-query">
+                	<button type="submit" class="btn">検索</button>
+              	</form>
+              	[% INCLUDE 'pager.tt' %]
+              	</div>
+            [%- FOREACH item = bookmark -%]
+            	<div class="well-fff8dc">
+            	
+            	<p align="right">
+              	&nbsp;<button class="close">&times;</button>
+            	</p>
+              	<a href="[%- item.url | html -%]" target="blank">[%- item.title | html -%]</a><br>
+            	</div>
+            
+
+            [% END %]
+            <div align="right">
+	            [% INCLUDE 'pager.tt' %]
+			</div>            
+            <br>
+            </div>
+           </div>
+</body>
+</html>

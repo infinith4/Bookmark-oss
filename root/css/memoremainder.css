@@ -1,0 +1,84 @@
+
+h1 {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+ 
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%
+  }
+ 
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+75% {
+  font-size: 300%;
+  margin-left: 25%;
+  width: 150%;
+}
+
+#foot{
+    position:absolute;
+    bottom:0px;
+    height:0px;
+    width:100%;
+}
+
+h3 {
+  #margin: 0;
+  background-color: rgb(69,169,169);
+  background-image: linear-gradient(bottom, rgb(169,169,169) 14%, rgb(169,169,169) 57%);
+  background-image: -o-linear-gradient(bottom, rgb(169,169,169) 14%, rgb(169,169,169) 57%);
+  background-image: -moz-linear-gradient(bottom, rgb(69,69,69) 14%, rgb(69,69,69) 57%);
+  background-image: -webkit-linear-gradient(bottom, rgb(69,69,69) 14%, rgb(169,169,169) 57%);
+  background-image: -ms-linear-gradient(bottom, rgb(169,169,169) 14%, rgb(169,169,169) 57%);
+  color: #000;
+}
+
+h3 a {
+  background: url("css/sprite.png") 15px 13px no-repeat;
+  display: block;
+  #padding: 10px;
+  #padding-left: 102px;
+  #margin: 0;
+  color: #fff;
+  #text-decoration: none;
+  font-weight: normal;
+  border-bottom: 1px solid rgba(29,29,29, 0.5);
+  text-shadow: 1px 1px 2px rgb(169,169,169);
+}
+h3:hover { background-image: -webkit-linear-gradient(bottom, rgb(169,169,169) 24%, rgb(69,69,69) 57%);}
+h3.open  { background: rgb(69,69,69); }
+h3.open a { background-position: 13px -25px;?}
+
+
+#tag {
+    width:20px;
+    background: rgb(69,69,69);
+}
+
+
+div.memo{
+    background:rgb(255,255,255);
+    width:70%;
+    heigth:20%
+}
+div.tag{
+    /*width:50%;*/
+    /*background:rgb(255,255,255);*/
+}
+pre{
+    background:rgb(255,255,255);
+    white-space: pre;           /* CSS 2.0 */
+    white-space: pre-wrap;      /* CSS 2.1 */
+    white-space: pre-line;      /* CSS 3.0 */
+    white-space: -pre-wrap;     /* Opera 4-6 */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap;  /* HP Printers */
+    word-wrap: break-word;      /* IE 5+ */
+}

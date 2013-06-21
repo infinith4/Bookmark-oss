@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+  <script type="text/javascript">
+
+$(function(){
+httpObj = new XMLHttpRequest();
+//httpObj.open("get", "./jsondata.txt", true);
+httpObj.open("get", "/json/tagdata", true);
+httpObj.onload = function(){
+  var myData = JSON.parse(this.responseText);
+  //alert(myData.tag[1].tag);
+  var tags = new Array();
+  for(var i=0; i<myData.usertag.length;i++){
+    for(var j=0; j<myData.tag.length;j++){
+      //alert(myData.usertag[i].tagid);
+      //alert(myData.tag[j].tagid);
+      if(myData.usertag[i].tagid == myData.tag[j].tagid){
+        tags.push(myData.tag[j].tag);
+        
+      }
+    }
+  }
+  var txtusertag = "";
+  var txttag = "";
+  var txttags = "";
+  for (var i=0; i<myData.usertag.length; i++){
+    txtusertag = txtusertag + myData.usertag[i].userid + "　" + myData.usertag[i].tagid+"<br>";
+  }
+  for (var i=0; i<myData.tag.length; i++){
+    txttag = txttag + myData.tag[i].tagid + "　" + myData.tag[i].tag+"<br>";
+
+  }
+  for (var i=0; i<tags.length; i++){
+    txttags = txttags + tags[i] +"<br>";
+
+  }
+
+  document.getElementById("result").innerHTML = txttag;
+  document.getElementById("result").innerHTML = txttags;
+  $('#tag').autocomplete({
+    minLength: 1,
+    source: function(req, res) {
+      var result = [];
+      for (var i = 0; i < tags.length; i++) {
+        if (tags[i].indexOf(req.term) == 0) {result.push(tags[i]);}
+      }
+      res(result);
+    }
+  });
+
+}
+
+httpObj.send(null);
+
+});
+
+  </script>
+</head>
+[% INCLUDE 'header.tt' %]
+<body>
+  <label for="tag">Your favorite tag: </label>
+  <input id="tag"/>
+  <p id="result"></p>
+
+<!-- Layout1 -->
+<div class="container-fluid">
+ 
+            <div class="span2">
+ 			</div>         
+            <div class="span5">
+              <div class="well">
+            <form method="POST" action="/bookmarksetting" name="settingform">
+              [% IF exituser != 1 %]
+              <h4>ようこそ、<img src='[% user.image_url %]' width='32' hight='32'>[% user.name %]さん。</h4>
+              <h5><font color="#ff0000">以下の設定を完了してください。</font></h5>
+              [% END %]
+            <font size="3" color="#228b22">設定</font><br>
+            <!-- 複数個をチェックボックスで指定<br> -->
+            <li>リマインドする日程:(<font size="2" color="#ff0000">*すべて必須</font>)</li>
+            <!-- <select name="select" style="width: 30px"> -->
+            <!--google map のルート検索の時間指定のところと同じように,一覧から選択できて,かつ,入力できるようにしたい<br>-->           
+[% IF findbookmarksetting.days.match('Mon').0 == '1'%]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Mon" checked>
+[% ELSE %]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Mon" >
+[% END %]
+            月曜日
+[% IF findbookmarksetting.days.match('Tue').0 == '1'%]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Tue" checked>
+[% ELSE %]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Tue" >
+[% END %]
+            火曜日
+[% IF findbookmarksetting.days.match('Wed').0 == '1'%]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Wed" checked>
+[% ELSE %]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Wed" >
+[% END %]
+            水曜日
+[% IF findbookmarksetting.days.match('Thr').0 == '1'%]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Thr" checked>
+[% ELSE %]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Thr" >
+[% END %]
+            木曜日
+[% IF findbookmarksetting.days.match('Fri').0 == '1'%]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Fri" checked>
+[% ELSE %]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Fri" >
+[% END %]
+            金曜日
+
+[% IF findbookmarksetting.days.match('Sat').0 == '1'%]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Sat" checked>
+[% ELSE %]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Sat" >
+[% END %]
+            土曜日
+[% IF findbookmarksetting.days.match('Sun').0 == '1'%]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Sun" checked>
+[% ELSE %]
+            <input type="checkbox" name="days" id="optionscheckbox" value="Sun" >
+[% END %]
+            日曜日
+
+            <br>
+            Email:<br>
+            <input type="text" name="email" size=50 value="[% findbookmarksetting.email %]"><br>
+            リマインドするタグ:(<font size="2" color="#ff0000">右側のタグをクリック</font>)<br>
+            <input id="tag" size=20><br>
+            <input type="text" name="remind_tag" id="remindtag" size=30 value="[% findbookmarksetting.remind_tag %]"><br>
+            <p id="result"></p>
+            リマインドする数:(<font size="2" color="#ff0000">*半角.例:10</font>)<br>
+            <input type="text" name="remind_num" size=5 value="[% findbookmarksetting.remind_num %]"><br>
+                    
+            通知時間:
+            
+            [%-MACRO selecttime (name,start,end) BLOCK -%]
+              <select id="[% name %]" name="[% name %]" style="width:70px;">
+                [%- datetimelist = [
+                  {datetimename => 'year',datetime => datetime.year },
+                  {datetimename => 'month',datetime => datetime.month },
+                  {datetimename => 'day',datetime => datetime.day },
+                  {datetimename => 'hour',datetime => findbookmarksetting.hour },
+                  {datetimename => 'minute',datetime => findbookmarksetting.minute}
+                ]-%]
+              [%- FOREACH n = datetimelist %]
+                [%- IF name == n.datetimename -%]
+                  [%- FOREACH i = [start..end] %]
+                    [%- IF i == n.datetime -%]
+                      <option value="[% i %]" selected >[% i %]</option>
+                    [%- ELSE -%]
+                      <option value="[% i %]" >[% i %]</option>
+                    [%- END -%]
+                  [%- END %]
+                [%- END -%]
+              [%- END -%]
+              </select>
+            [%- END -%]
+            [% selecttime ('hour' ,0,23) %]時
+            [% selecttime ('minute',0,59) %]分
+            <br>
+  <button type="submit" class="btn btn-danger"><i class="icon-pencil icon-white" style="margin-top: 1px;"></i>保存</button>
+            </form>
+      
+            	</div>
+            </div>
+            <div class="span5">
+				<div class="well">
+				  <!-- 過去にリマインドされたタグ<br> -->
+                  主なタグ:<br>
+                  [% FOREACH maintag = bookmarkmaintags %]
+                  
+                  
+                  [% IF maintag == '' %]
+                  <button class="btn btn-primary" rel="tooltip" data-original-title="リマインドするタグは,空白です">
+                    <p name="tag" onclick="document.settingform.remindtag.value='[% maintag %]'">[タグ無し]</p>
+                  </button>
+                  [% ELSE %]
+                  <button class="btn btn-primary">
+                    <p name="tag" onclick="document.settingform.remindtag.value='[% maintag %]'">[% maintag %]</p>
+                  </button>
+                  [% END %]
+                  [% END %]
+                  <br>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                  <script src="js/bootstrap.min.js"></script>
+                  <script>
+                    $(function() {
+                    $('button[rel=tooltip]').tooltip()
+                    });
+                  </script>
+                  <hr>
+                  <div id="alltagopen">
+                    <h5><button class="btn btn-danger">すべてのタグ</button></h5><br>
+                    <div>
+                    [% FOREACH tag = bookmarktags %]
+                    
+                    <button class="btn btn-info">
+                      [% IF tag == '' %]
+                      <p name="tag" onclick="document.settingform.remindtag.value='[% tag %]'">[タグ無し]</p>
+                      [% ELSE %]
+                      <p name="tag" onclick="document.settingform.remindtag.value='[% tag %]'">[% tag %]</p>
+                    </button>
+                    [% END %]
+                    [% END %]
+                    </div>
+                  </div>
+
+				</div>
+			</div>
+          </div>
+
+[% settingok %]
+
+[% IF settingok == 1 %]
+<script>
+alert("保存しました");
+var remind_tag = "[% findbookmarksetting.remind_tag %]";
+location.href="/list?remind_tag="+remind_tag;
+</script>
+[% END %]
+      
+</body>
+</html>

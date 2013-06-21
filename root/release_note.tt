@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+[% INCLUDE 'header.tt' %]
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  <div class="hero-unit">
+    <h2>Release Note</h2>
+    <p>2013.03.21.Reminder Beta版をreleaseしました.<br>
+      (心より拡散お願いいたします)</p>
+    <li>2013.03.26.</li>
+    Docomo,EZWebメールの文字化けに対応.(shift_jisにしました)<br>
+    
+    <li>2013.03.28-29.</li>
+    DBを修正しました.<br>
+    ユーザーのすべてのタグを取得可能しました.<br>
+    Twitter:@Reminderasiaを作成.ツイートボタンの追加しました.<br>
+    /listのBookmarkのデザインとリンクを新しいタブで開くように修正しました.<br>
+    <li>2013.05.26.</li>
+    1.DBを修正したので,スクリプトのほとんどを修正しました.<br>
+    2.<a href="http://reminder.asia:4000/bookmarksetting">リマインドの設定</a>において,複数のタグを指定可能にしました.<br>
+    3.検索画面を修正したが,サーバ側のメモリが足りないらしく検索したら,「Out of Memory!」と出たので,「検索画面」は使えなくしました.<br>
+    4.サーバのメモリが増やせるようであれば,検索を可能にします.<br>
+    5.自動で,はてなブックマークを取得するスクリプトを走らせ始めました.(ブックマークを登録してから,おおよそ5分ぐらいで取得できます)<br>
+    6.自動で,はてなブックマークのタグを取得するスクリプトを走らせ始めました.<br>
+    <li>2013.05.29.</li>
+    1.favicon <img src="favicon.ico"> <img src="favicon.png" alt="favicon.png">を作成しました.<br>
+    <li>2013.06.07.</li>
+    1. <a href="https://chrome.google.com/webstore/detail/pkpfhjlmnffcplalkilbjiilnhpeokcg/publish-accepted?hl=ja">Bookmark Reminder for Chrome extention</a>をリリースしました.拡散よろしくおねがいします.<br>
+    2. メールで送信したブックマークを読んだ回数を記録できるようになりました.
+    
+  </div>
+<!--
+<div class="container">
+  <div class="row-fluid">
+    <div class="span9">
+      <div class="well">
+      </div>
+    </div>
+  </div>
+</div>
+-->
+</body>
+</html>

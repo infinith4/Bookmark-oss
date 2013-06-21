@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Auto Complete</title>
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+
+$(function(){
+httpObj = new XMLHttpRequest();
+//httpObj.open("get", "./jsondata.txt", true);
+httpObj.open("get", "/json/tagdata", true);
+httpObj.onload = function(){
+  var myData = JSON.parse(this.responseText);
+  //alert(myData.tag[1].tag);
+  var tags = new Array();
+  for(var i=0; i<myData.usertag.length;i++){
+    for(var j=0; j<myData.tag.length;j++){
+      //alert(myData.usertag[i].tagid);
+      //alert(myData.tag[j].tagid);
+      if(myData.usertag[i].tagid == myData.tag[j].tagid){
+        tags.push(myData.tag[j].tag);
+        
+      }
+    }
+  }
+  var txtusertag = "";
+  var txttag = "";
+  var txttags = "";
+  for (var i=0; i<myData.usertag.length; i++){
+    txtusertag = txtusertag + myData.usertag[i].userid + "　" + myData.usertag[i].tagid+"<br>";
+  }
+  for (var i=0; i<myData.tag.length; i++){
+    txttag = txttag + myData.tag[i].tagid + "　" + myData.tag[i].tag+"<br>";
+
+  }
+  for (var i=0; i<tags.length; i++){
+    txttags = txttags + tags[i] +"<br>";
+
+  }
+
+  document.getElementById("result").innerHTML = txttag;
+  document.getElementById("result").innerHTML = txttags;
+  $('#tag').autocomplete({
+    minLength: 1,
+    source: function(req, res) {
+      var result = [];
+      for (var i = 0; i < tags.length; i++) {
+        if (tags[i].indexOf(req.term) == 0) {result.push(tags[i]);}
+      }
+      res(result);
+    }
+  });
+
+}
+
+httpObj.send(null);
+
+});
+
+  </script>
+</head>
+<body>
+  <label for="tag">Your favorite tag: </label>
+  <input id="tag"/>
+  <p id="result"></p>
+
+</body>
+</html>

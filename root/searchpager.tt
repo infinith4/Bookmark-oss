@@ -1,0 +1,18 @@
+[% IF search_word != '' %]
+   <a href="/search?page=[% previouspage %]&search_word=[% search_word %]">Previous</a>              
+   [% page %]
+
+   [% IF maxpage != page  %]
+      <a href="/search?page=[% nextpage %]&search_word=[% search_word %]">Next</a>
+      <a href="/search?page=[% maxpage %]&search_word=[% search_word %]">End</a>
+   [% END %]
+[% ELSE %]
+   <a href="/search?page=[% previouspage %]">Previous</a>              
+   [% page %]
+
+   [% IF maxpage != page  %]
+      <a href="/search?page=[% nextpage %]">Next</a>
+      <a href="/search?page=[% maxpage %] ">End</a>
+   [% END %]
+
+[% END %]

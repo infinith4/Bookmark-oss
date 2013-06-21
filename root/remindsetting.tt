@@ -1,0 +1,10 @@
+<html>
+<body>
+[%- FOREACH item = bookmark -%]
+	<a href="[%- item.url -%]">[%- item.title -%]</a><br>
+[% END %]
+<a href="/list/[% previouspage %]">Previous</a>
+[% page %]
+<a href="/list/[% nextpage %]">Next</a>
+</body>
+</html>

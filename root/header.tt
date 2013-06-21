@@ -1,0 +1,125 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bookmark Reminder</title>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.tagsinput.css">
+    <link rel="stylesheet" type="text/css" href="./js/jquery.tooltip.js/jquery.tooltip.css" />
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link href="./css/memoremainder.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/tags_display.js"></script>
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+ <style type="text/css">
+   div.hero-unit {background-image: url(img/yun_1658.jpg);}
+   li#bookmark { margin:10px; }
+   li#tweet { margin:10px; }
+   li#follow { margin:5px; }
+    h1 {
+      -moz-animation-duration: 3s;
+      -webkit-animation-duration: 3s;
+      -moz-animation-name: slidein;
+      -webkit-animation-name: slidein;
+    }
+    
+    @-moz-keyframes slidein {
+      from {
+        margin-left:100%;
+        width:300%
+      }
+      
+      75% {
+        font-size:300%;
+        margin-left:25%;
+        width:150%;
+      }
+      
+      to {
+        margin-left:0%;
+        width:100%;
+      }
+    }
+    
+    @-webkit-keyframes slidein {
+      from {
+        margin-left:150%;
+        width:200%
+      }
+      
+      100% {
+        font-size:300%;
+        margin-left:25%;
+        width:150%;
+      }
+      
+      to {
+      	
+        margin-left:0%;
+        width:100%;
+      }
+    }
+
+  </style>
+</head>
+<body background="./img/webtreats_stone_3.jpg">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="/index">Bookmark Reminder</a>
+    <ul class="nav">
+      <li><a href="index">Home</a></li>
+      [% IF c.session.name.defined %]
+      <li><a href="/hatena/logout"><i class="icon-off"></i>Logout</a></li>
+      <li><a href="/list"><i class="icon-th-list"></i>List</a></li>
+      <li><a href="/history"><i class="icon-time"></i>History</a></li>
+      <li><a href="/bookmarksetting"><i class="icon-wrench"></i>Setting</a></li>
+      <li><a href="http://www.hatena.ne.jp/[% c.session.name %]" target="blank">[% c.session.name %]</a></li>
+      [% ELSE %]
+      <li><a href="/hatena/login"><i class="icon-off"></i>ログインまたは登録</a></li>
+      [% END %]
+      <li><a href="https://docs.google.com/presentation/d/1LoFm6umjoKK-cRWNJlTAuyctqBYyxkS0bJqBTS7-rFo/edit?usp=sharing" target="_blank">Bookmark Reminderとは</a></li>
+      <li id="bookmark"><a href="http://b.hatena.ne.jp/entry/http://reminder.asia:4000/" class="hatena-bookmark-button" data-hatena-bookmark-title="Bookmark Reminder" data-hatena-bookmark-layout="simple-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+      <li id="bookmark">
+        <div class="fb-like" data-href="http://reminder.asia:4000/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+      </li>
+
+      <li id="bookmark">
+        <div class="g-plusone" data-size="medium"></div>
+      </li>
+      <li id="tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://reminder.asia:4000" data-text="Bookmark Reminder -あなたのブックマークをリマインド-" data-via="Reminderasia" data-lang="ja" data-hashtags="reminder" data-size="small">ツイート</a></li>
+      
+      
+      <!--<li id="follow"><a href="https://twitter.com/Reminderasia" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-size="large">@Reminderasiaさんをフォロー</a></li>-->
+<!-- Place this tag where you want the +1 button to render. -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>      
+      
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+<!--      <li><a href=""><div class="fb-like" data-href="http://reminder.asia:4000" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div></a></li>
+<form class="navbar-form pull-left">
+  <input type="text" class="span2">
+  <button type="submit" class="btn">Submit</button>
+</form>
+-->
+    </ul>
+  </div>
+</div>

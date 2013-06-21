@@ -1,0 +1,3 @@
+[% username %]<br>
+[% image_url%]<br>
+[% thumbnail_url%]

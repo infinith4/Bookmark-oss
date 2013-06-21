@@ -1,0 +1,24 @@
+<dl>
+[% FOREACH item = list %]
+  [% item.created %]
+  <dt>item.tag:,[% item.tag %]<br>
+  item.tagid(BookmarkTag.tagid or BookmarkUserTag.tagid):[% item.tagid %]<br>
+  item.usertag_tag.id(BookmarkTag.tag)[% item.tag.tagid %]
+<br>(item.userid(BookmarkUserTag.userid):[% item.userid %],item.usertag_tag.tagid:[% item.usertag_tag.tagid %],tagid:[% item.tagid %])</dt>
+[% END %]
+
+===<br>
+<dl>
+[% FOREACH item = list %]
+  [% item.created %]
+  <dt>item.tag:,[% item.tag %]<br>
+  item.tagid(BookmarkTag.tagid or BookmarkUserTag.tagid):[% item.tagid %]<br>
+  item.usertag_tag.id(BookmarkTag.tag)[% item.usertag_tag.id %]
+<br>(item.userid(BookmarkUserTag.userid):[% item.userid %],item.usertag_tag.tagid:[% item.usertag_tag.tagid %],tagid:[% item.tagid %])</dt>
+[% END %]
+==<br>
+[% FOREACH item = list.usertag_tag %]
+  [% item.created %]
+  <dt>[% item.tag.userid %]([% item.tag %],item.id:[% item.id %],tagid:[% item.tagid %])</dt>
+[% END %]
+</dl>

@@ -1,0 +1,9 @@
+
+        [% history.bookmarkurl %]
+                 [%- FOREACH item = history -%]
+                   [%- item.id | html -%]<br>
+                   [%- item.bookmark.originalurl | html -%]<br>
+                   [%- item.sendtime | html -%]<br>
+                   [%- item.bookmark.userid | html -%]<br>
+                   
+                 [% END %]

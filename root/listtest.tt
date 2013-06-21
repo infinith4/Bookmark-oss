@@ -1,0 +1,8 @@
+aaaaa
+[% FOREACH item = bookmark %]
+   
+   [% item.userid %]<br>
+   [% item.title %]<br>
+   [% item.tag %]<br>
+   [% item.description %]<br>   
+[% END %]

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+</head>
+<body>
+<script>
+httpObj = new XMLHttpRequest();
+httpObj.open("get", "./jsondata.txt", true);
+httpObj.onload = function(){
+var myData = JSON.parse(this.responseText);
+var txt = "";
+for (var i=0; i<myData.item.length; i++){
+txt = txt + myData.item[i].itemName + "　" + myData.item[i].itemPrice+"円<br>";
+}
+document.getElementById("result").innerHTML = txt;
+}
+httpObj.send(null);
+
+  var fruits = ["list" :{"created":"2013-03-28 09:20:19","userid":"infinith4","tagid":"0","id":"1"}];
+  alert(fruits[0].list[0].userid);
+
+
+</script>
+<p id="result"></p>
+  <label for="fruit">Your favorite fruit: </label>
+  <input id="fruit"/>
+</body>
+</html>

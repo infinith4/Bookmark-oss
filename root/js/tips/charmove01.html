@@ -1,0 +1,108 @@
+<html>
+
+<body>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var message = new Array();
+message[0] = "写真集でございます。";
+message[1] = "☆いつも遊びに来て頂き有難う!!";
+message[2] = "☆まだ画像少ないですが??。";
+message[3] = "★時々覗いて見てくださいネェ。";
+message[4] = "☆エエｯ　まだ少ないネェ！！　v^^)";
+message[5] = "☆本当に少ない（爆）　v^^)";
+var reps = 1;
+var dsp_spd = 200;
+var hold = 4;
+var p = message.length;
+var q = 0;
+var r = 0;
+var C = 0;
+var mC = 0;
+var s = 0;
+var sT = null;
+
+if (reps < 1) {
+reps = 1;
+}
+function dsp_msg() {
+typing = message[mC];
+q = typing.length;
+r = q + hold;
+prn_msg();
+}
+function prn_msg() {
+if (s > r) {
+s = 0;
+}
+if (s > q) {
+document.title = '★＝☆＝★ '+ typing +' ★＝☆＝★';
+}
+else {
+document.title = '★＝☆＝★ '+ typing.substr(0,s)+' ★＝☆＝★';
+}
+if (C < (r * reps)) {
+sT = setTimeout("prn_msg()", dsp_spd);
+C++;
+s++;
+}
+else {
+C = 0;
+s = 0;
+mC++;
+if(mC > p - 1) {mC = 0;}
+sT = null;
+dsp_msg();
+}
+}
+dsp_msg();
+//-->
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 6.5.0.0 for Windows">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<TITLE>皆の写真集</TITLE>
+<style>
+<!--
+.filter1 {filter: glow(Color=red,Strength=10);width=300px;height=170px;}
+.filter2 {filter: glow(Color=brown,Strength=9);width=200px;height=170px;}
+.filter3 {filter: glow(Color=gray,Strength=12);width=450px;height=170px;}
+-->
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var speed = 3000
+var i = 0;
+var filter = 'filter1';
+function chg_disp_area() {
+if (document.getElementById&&document.all) {
+ok = true;
+i++;
+if (i==1) filter = 'filter1';
+if (i==2) filter = 'filter2';
+if (i==3) filter = 'filter3';
+msg_str.className = filter;
+if (i > 2) i = 0;
+timer = setTimeout('chg_disp_area()', speed);
+} 
+}
+//-->
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=x-sjis">
+</HEAD>
+<body onload="chg_disp_area()" bgcolor="#FFFFFF" text="#000000" link="#000000" vlink="#000000" alink="#000000">
+<center>
+<center>
+<table cellspacing="0" cellpadding="10">
+
+<tr>
+<TD height="26" width="699">
+<center>
+<P id="msg_str"><font size="4" color=white><b>皆の写真集へようこそ　ＢＢＳにペッタンしていただいた画像をＵＰしました。　</b></font></P>
+</center>
+</TD>
+</tr>
+
+</table>
+</center>
+</body>
+</html>

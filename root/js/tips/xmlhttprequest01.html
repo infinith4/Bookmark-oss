@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+<body>
+
+<script>
+httpObj = new XMLHttpRequest();
+httpObj.open("get", "./jsondata.txt", true);
+httpObj.onload = function(){
+var myData = JSON.parse(this.responseText);
+var txt = "";
+for (var i=0; i<myData.item.length; i++){
+txt = txt + myData.item[i].itemName + "　" + myData.item[i].itemPrice+"円<br>";
+}
+document.getElementById("result").innerHTML = txt;
+}
+httpObj.send(null);
+
+</script>
+</body>
+</html>

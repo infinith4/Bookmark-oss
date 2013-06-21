@@ -1,0 +1,3 @@
+Run script/bookmark_server.pl to test the application.
+mysqldump -u root bookmarkdb > /home/th4/catalyst/Bookmark/bookmark_dump.sql
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/tags_display.js"></script>
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script src="./js/jquery.jscrollpane.min.js" type="text/javascript"></script>
+  <script src="./css/jquery.jscrollpane.css" rel="stylesheet"></script>
+  
+<script type="text/javascript">
+	$(function() {
+		$("#jscrollpanebox").jScrollPane();
+	});
+</script>
+</head>
+<body>
+<div id="jscrollpanebox">
+<p>[% FOREACH user = list %]
+[% FOREACH item = user.user_usertag %]
+  [% item.created %]<br>
+  item.tag:[% item.tag.tag %]<br>
+  item.tagid(BookmarkTag.tagid or BookmarkUserTag.tagid):[% item.tag.tagid %]<br>
+  item.usertag_tag.id(BookmarkTag.tag):[% item.usertag_tag01.tag %]
+<br>(item.userid(BookmarkUserTag.userid):[% item.tag01.userid %],item.usertag_tag.tagid:[% item.usertag_tag.tagid %],tagid:[% item.tagid %])
+[% END %]
+[% END %]
+</p>
+<div>
+<br>
+==================
+
+<dl>
+[% FOREACH item = list %]
+  [% item.created %]
+  <dt>item.tag:[% item.tag %]<br>
+  item.tagid(BookmarkTag.tagid or BookmarkUserTag.tagid):[% item.tagid %]<br>
+  item.usertag_tag.id(BookmarkTag.tag):[% item.usertag_tag01.tag %]
+<br>(item.userid(BookmarkUserTag.userid):[% item.tag01.userid %],item.usertag_tag.tagid:[% item.usertag_tag.tagid %],tagid:[% item.tagid %])</dt>
+[% END %]
+=====================
+<dl>
+[% FOREACH item = list %]
+  [% item.created %]
+  <dt>item.tag:,[% item.tag %]<br>
+  item.tagid(BookmarkTag.tagid or BookmarkUserTag.tagid):[% item.tagid %]<br>
+  item.usertag_tag.id(BookmarkTag.tag):[% item.usertag_tag01.tag %]
+<br>(item.userid(BookmarkUserTag.userid):[% item.userid %],item.usertag_tag.tagid:[% item.usertag_tag.tagid %],tagid:[% item.tagid %])</dt>
+[% END %]
+=====================
+<dl>
+[% FOREACH item = list %]
+  [% item.created %]
+  <dt>item.tag:,[% item.tag %]<br>
+  item.tagid(BookmarkTag.tagid or BookmarkUserTag.tagid):[% item.tagid %]<br>
+  item.usertag_tag.id(BookmarkTag.tag):[% item.tagid %]
+<br>(item.userid(BookmarkUserTag.userid):[% item.userid %],item.usertag_tag.tagid:[% item.usertag_tag.tagid %],tagid:[% item.tagid %])</dt>
+[% END %]
+
+===<br>
+<dl>
+[% FOREACH item = list %]
+  [% item.created %]
+  <dt>item.tag:,[% item.tag %]<br>
+  item.tagid(BookmarkTag.tagid or BookmarkUserTag.tagid):[% item.tagid %]<br>
+  item.usertag_tag.id(BookmarkTag.tag)[% item.usertag_tag.id %]
+<br>(item.userid(BookmarkUserTag.userid):[% item.userid %],item.usertag_tag.tagid:[% item.usertag_tag.tagid %],tagid:[% item.tagid %])</dt>
+[% END %]
+==<br>
+[% FOREACH item = list.usertag_tag %]
+  [% item.created %]
+  <dt>[% item.tag.userid %]([% item.tag %],item.id:[% item.id %],tagid:[% item.tagid %])</dt>
+[% END %]
+</dl>
+</body>
+</html>

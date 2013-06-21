@@ -1,0 +1,18 @@
+[% IF tag != '' %]
+   <a href="/list?page=[% previouspage %]&tag=[% tag %]">Previous</a>              
+   [% page %]
+
+   [% IF maxpage != page  %]
+      <a href="/list?page=[% nextpage %]&tag=[% tag %]">Next</a>
+      <a href="/list?page=[% maxpage %]&tag=[% tag %]">End</a>
+   [% END %]
+[% ELSE %]
+   <a href="/list?page=[% previouspage %]">Previous</a>              
+   [% page %]
+
+   [% IF maxpage != page  %]
+      <a href="/list?page=[% nextpage %]">Next</a>
+      <a href="/list?page=[% maxpage %] ">End</a>
+   [% END %]
+
+[% END %]

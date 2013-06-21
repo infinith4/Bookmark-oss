@@ -1,0 +1,19 @@
+<html>
+<body>
+<!--[%- IF! c.user_exists -%]-->
+  <form method="POST">
+        <br>
+      ユーザ名：
+      <input type="text" name="uid" size="15" />
+      パスワード：
+      <input type="password" name="passwd" size="15" />
+      <input type="submit" value="ログイン" />
+    
+  </form>
+  <div style="color:Red;">[% error | html %]</div>
+<!--[%- ELSE -%]-->
+  あなたはログイン済みです。<br />
+  あなたが[% c.user.get('unam') %]さんでない場合には、
+  <a href="[% c.uri_for('/logout') %]">ログアウト</a>してください。
+<!--[%- END -%]-->
+</body>

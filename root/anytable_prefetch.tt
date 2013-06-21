@@ -1,0 +1,14 @@
+
+[% FOREACH item = list %]
+   [% item.userid %]
+[% END %]
+<br>
+aaaaa
+[% test %]<br>
+=====<br>
+[% FOREACH user = list %]
+  [% FOREACH item = user.user_usertag %]
+    [% item.tag.tagid | html %]<br>
+    [% item.tag.tag | html %]<br>
+  [% END %]
+[% END %]

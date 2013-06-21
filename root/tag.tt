@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />	
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+  <script type="text/javascript">
+    var $input = $("<input type='text' name='remind_tag' id='remindtag' size=30 value=''>");
+    var addtag = document.getElementById('addtag');
+    
+function addElement() {
+    var i = 0;
+    var element = document.createElement('input');
+    element.type = "text";
+    element.name = "remind_tag";
+    element.id = "remindtag" + i;
+    element.size = 30;
+    element.value = '';
+
+    var objBody = document.getElementById("addtag");
+    objBody.appendChild(element);
+    // body要素にdivエレメントを追加
+}  </script>
+</head>
+<body>
+<button onclick="addElement()">要素を追加</button>
+  <label for="tag">Your favorite tag: </label>
+  <input id="tag"/>
+  <p id="result"></p>
+            リマインドするタグ:(<font size="2" color="#ff0000">右側のタグをクリック</font>)<br>
+            <input type="text" name="remind_tag" id="remindtag" size=30 value="[% findbookmarksetting.remind_tag %]">
+            <p id="addtag" onclick="addtag()">aa</p>  
+            <!---->
+              <input type="image" src="img/tagadd.png" onmouseout="this.src='img/tagadd.png';" onmouseover="this.src='img/ontagadd.png';" alt="タグを削除する"><br></p>
+              <p id="addtag" onclick="addtag()"><button src="img/tagadd.png"  id="addtag" onclick="addtag()"/>a</button></p>
+              <input type="button" onclick="addtag()"></input>
+</body>
+</html>

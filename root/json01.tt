@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+  <script>
+    httpObj = new XMLHttpRequest();
+    //httpObj.open("get", "http://localhost:4000/dbjson", true);
+    httpObj.open("get", "./jsondata.txt", true);
+
+    //var data = JSON.parse(httpObj.responseText);
+    //alert(data);
+    httpObj.onload = function(){
+    var myData = JSON.parse(this.responseText);
+    var txt = "";
+    for (var i=0; i<myData.item.length; i++){
+        //alert(myData.item);
+        txt = txt + "tagid:" + myData.item[i].tagid + "userid:" + myData.item[i].userid+"<br>";
+    }
+    //alert(myData.list[0].tagid);
+                                        
+    document.getElementById("result").innerHTML = txt;
+    
+    httpObj.send(null);
+</script>
+<p id="result"></p>
+<!--  <label for="fruit">Your favorite fruit: </label>
+  <input id="fruit"/>-->
+</body>
+</html>

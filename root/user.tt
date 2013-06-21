@@ -1,0 +1,7 @@
+<html>
+<body>
+[% FOREACH user = bookmarkuser %]
+[% user.userid %],[% user.created %]<br>
+[% END %]
+</body>
+</html>
